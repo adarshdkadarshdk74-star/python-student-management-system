@@ -35,25 +35,6 @@ I built this project to practise Python programming concepts, improve my problem
 * Exception Handling
 * Git and GitHub
 
-## How to Run the Project
-
-### Prerequisites
-
-Python 3 must be installed on your computer.
-
-### Steps
-
-1. Download or clone this repository.
-2. Open the project folder in VS Code.
-3. Open the terminal.
-4. Run the following command:
-
-```bash
-python student_management_system.py
-```
-
-5. Follow the instructions displayed in the terminal.
-
 ## How to Use
 
 When you run the program, a menu appears with six options:
