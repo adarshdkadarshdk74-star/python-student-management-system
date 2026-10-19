@@ -4,7 +4,7 @@
 
 The Student Management System is a beginner-friendly Python project that allows users to manage student names through a simple, menu-driven console application.
 
-I built this project to practise Python programming concepts and develop problem-solving skills.
+I built this project to practise Python programming concepts, improve my problem-solving skills, and learn file handling and permanent data storage.
 
 ## Features
 
@@ -13,57 +13,37 @@ I built this project to practise Python programming concepts and develop problem
 * **Search Student:** Search for a student by name.
 * **Update Student:** Change an existing student's name.
 * **Delete Student:** Remove a student from the list.
-* **Input Validation:** Reject empty names and duplicate student names.
-* **Error Handling:** Handle invalid menu input.
-* **Case-Insensitive Search:** Find students regardless of uppercase or lowercase letters.
+* **Input Validation:** Reject empty names and names containing only numbers when adding or updating students.
+* **Duplicate Prevention:** Prevent students from being added with duplicate names.
+* **Case-Insensitive Search:** Search for students regardless of uppercase or lowercase letters.
+* **Permanent Storage:** Save student records in a JSON file.
+* **Automatic Loading:** Load previously saved student records when the program starts.
+* **Error Handling:** Handle invalid menu input, missing files, and invalid JSON data.
+* **Data Validation:** Check the structure and basic data types of loaded student records.
 
 ## Technologies Used
 
 * Python 3
+* JSON
+* File Handling
 * Python Lists
 * Functions
 * Loops and Conditional Statements
 * String Methods
 * Exception Handling
 
-## How to Use
+## How to Run the Project
 
-When you run the program, a menu appears with six options:
+### Prerequisites
 
-1. Add Student
-2. View Students
-3. Search Student
-4. Update Student
-5. Delete Student
-6. Exit
+Install Python 3 on your computer.
 
-Enter the number of the option you want to use and follow the instructions displayed in the terminal.
+### Steps
 
-## Python Concepts Practised
+1. Download or clone this repository.
+2. Open the project folder in VS Code.
+3. Open the terminal.
+4. Run the following command:
 
-This project helped me practise:
-
-* Variables and user input
-* Lists and list methods
-* Functions
-* `while` and `for` loops
-* `if`, `elif`, and `else`
-* String methods such as `.strip()` and `.lower()`
-* `break` and `for-else`
-* Exception handling with `try-except`
-* CRUD operations: Create, Read, Update, and Delete
-
-## Current Limitation
-
-Student records are currently stored in a Python list. The records are lost when the program closes.
-
-## Future Improvements
-
-* Save student records to a JSON file.
-* Load saved records when the program starts.
-* Add more student information, such as branch and semester.
-* Add automated tests.
-
-## Author
-
-Created as a Python learning project to improve my programming and problem-solving skills.
+```bash
+python student_management_system.py
