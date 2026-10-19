@@ -1,3 +1,4 @@
+import json
 students= []
 
 def menu():
@@ -8,6 +9,29 @@ def menu():
     print("4.Update Student")
     print("5.Delete Student")
     print("6.Exit")
+def save_students():
+   with open("student.json","w") as file:
+      json.dump(students,file)
+try:
+     with open("student.json","r") as file:
+       students= json.load(file)
+     if not isinstance(students, list):
+        print("enter valid student name.")
+        students=[]
+     else:
+        for name in students:
+           if not isinstance(name,str):
+              print("student data is invalid.")
+              students=[]
+              break
+              
+          
+except FileNotFoundError:
+      print("No saved records found. Starting with an empty list.") 
+except json.JSONDecodeError:
+    print("Invalid JSON data. Starting with an empty list.")
+    students = []
+    
 while(True):
   menu()
   try:
@@ -19,9 +43,12 @@ while(True):
         st_name=input("Enter your Name: ").strip().lower()
         if not st_name: 
             print("Enter valid input.")
+        elif st_name.isdigit():
+                print("Name cannot contain only numbers.")
         else:
            if st_name not in students:  
               students.append(st_name)
+              save_students()
               print("Student added successfully!")
            else:
               print("Student already exists!")
@@ -54,30 +81,39 @@ while(True):
          else:
            print("No students available!")
 
-     
-      elif choice==4:
+      elif choice == 4:
         print("Update Student Selected!")
-        if students:
-            search_name=input("Enter Student name to Search: ").strip().lower()
-            if search_name!="":
-                if search_name in students:
-                    new_name=input("Enter new name to update: ").strip().lower()
-                    if new_name!="" and (new_name not in students or search_name==new_name)  :
-                      position=students.index(search_name)
-                      students[position]=new_name
-                      print("Student updated successfully!")
-                    elif new_name=="":
-                       print("Enter valid name!")
-                    else:
-                        print("Student name already exists!")
-                else:
-                    print("Student not found!")
-            else:
-             print("Enter valid name!")  
-        else:
-           print("No students available!")
 
-                  
+        if students:
+            search_name = input("Enter Student name to Search: ").strip().lower()
+
+            if not search_name:
+                print("Enter valid name!")
+
+            elif search_name in students:
+                new_name = input("Enter new name to update: ").strip().lower()
+
+                if not new_name:
+                    print("Enter valid name!")
+
+                elif new_name.isdigit():
+                    print("Name cannot contain only numbers.")
+
+                elif new_name in students and new_name != search_name:
+                    print("Student name already exists!")
+
+                else:
+                    position = students.index(search_name)
+                    students[position] = new_name
+                    save_students()
+                    print("Student updated successfully!")
+
+            else:
+                print("Student not found!")
+
+        else:
+            print("No students available!")
+     
       elif choice==5:
           print("Delete Student Selected!") 
           if students:
@@ -87,6 +123,7 @@ while(True):
             elif search_name in students:
               positon_2=students.index(search_name)
               students.pop(positon_2)
+              save_students()
               print("Student deleted successfully!")
             else:
                 print("Student not found!")
